@@ -4,8 +4,8 @@
 2. Send requests to http://localhost:5001 for crm service endpoints
 3. Airflow service dashboard
 
-    a. docker exec -it <airflow_container_id> /bin/bash
-    b. Create an Airflow user with: `airflow users create \
+    * docker exec -it <airflow_container_id> /bin/bash
+    * Create an Airflow user with: `airflow users create \
     --username admin \
     --firstname Admin \
     --lastname User \
@@ -13,6 +13,6 @@
     --email admin@example.com \
     --password admin
 `
-    c. `exit`
-    b. Visit http://localhost:8080 for Airflow service dashboard
+    * `exit`
+    * Visit http://localhost:8080 for Airflow service dashboard
 6. 

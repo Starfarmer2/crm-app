@@ -1,8 +1,9 @@
 # CRM Service With Flask And Airflow
 ## Setup
-1. `docker-compose up --build` in ./airflow_app and ./crm_app separately
-2. Send requests to http://localhost:5001 for crm service endpoints
-3. Airflow service dashboard
+1. `docker network create shared_network` in .
+2. `docker-compose up --build` in ./airflow_app and ./crm_app separately
+3. Send requests to http://localhost:5001 for crm service endpoints
+4. Airflow service dashboard
 
     * `docker exec -it <airflow_container_id> /bin/bash`
     * Create an Airflow user with `airflow users create \
@@ -15,4 +16,5 @@
 `
     * `exit`
     * Visit http://localhost:8080 for Airflow service dashboard
-6. 
+    * <img width="500" alt="Screenshot 2024-07-22 at 4 46 53 AM" src="https://github.com/user-attachments/assets/2ba2bfaa-4a85-408f-8578-0929e4b5ac7f">
+5. Typical requests and ORM queries in ./explore_data

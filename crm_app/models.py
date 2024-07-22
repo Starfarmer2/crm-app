@@ -49,7 +49,7 @@ class Order(db.Model):
     is_sleeve = db.Column(db.Boolean)
     is_tag = db.Column(db.Boolean)
 
-    # 0 = economy, 1 = standard, 2 = premium
+    # 1 = economy, 2 = standard, 3 = premium
     garment_quality = db.Column(db.Integer)
 
     has_artwork = db.Column(db.Boolean)

@@ -1,0 +1,8 @@
+Faker
+Flask
+Flask-SQLAlchemy
+numpy
+pandas
+psycopg2-binary
+SQLAlchemy
+SQLAlchemy-Utils

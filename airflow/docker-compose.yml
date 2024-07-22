@@ -14,7 +14,7 @@ services:
       - AIRFLOW__CORE__LOAD_EXAMPLES=False
       - AIRFLOW__CORE__EXECUTOR=LocalExecutor
       - AIRFLOW__CORE__SQL_ALCHEMY_CONN=postgresql+psycopg2://airflow:airflow@db:5432/airflow
-      - AIRFLOW__WEBSERVER__SECRET_KEY=<YOUR_SECRET_KEY>  # Optional: Replace <YOUR_SECRET_KEY> with your own key
+      - AIRFLOW__WEBSERVER__SECRET_KEY=<YOUR_SECRET_KEY>
     depends_on:
       - db
 

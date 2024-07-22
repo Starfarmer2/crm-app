@@ -1,11 +1,12 @@
 import sys
 import os
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../../crm_app')))
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../../')))
 
 from airflow import DAG
 from airflow.operators.python_operator import PythonOperator
 from datetime import datetime, timedelta
-from models import db, User
+from crm_app.models import db, User
+from explore_data.fake_credentials import GOOGLE_EMAIL_ID, GOOGLE_APP_PASSWORD
 import random
 import smtplib
 from email.mime.text import MIMEText
@@ -21,18 +22,20 @@ default_args = {
 
 def send_promo_codes():
     with app.app_context():
-        users = User.query.filter(User.signup_date >= datetime.now() - timedelta(days=30)).filter(User.name == 'Jasper Hu').all()
+        users = User.query.filter(User.signup_date >= datetime.now() - timedelta(days=30)).filter(User.first_name == 'Bob').all()
         for user in users:
             promo_code = f'PROMO-{random.randint(1000, 9999)}'
             send_email(user.email, promo_code)
 
 def send_email(to_email, promo_code):
-    msg = MIMEText(f'Here is your promo code: {promo_code}')
+    msg = MIMEText(f'Here is your promo code: {123}')
     msg['Subject'] = 'Your Promo Code'
-    msg['From'] = 'no-reply@crm.com'
+    msg['From'] = GOOGLE_EMAIL_ID
     msg['To'] = to_email
 
-    with smtplib.SMTP('localhost') as server:
+    with smtplib.SMTP('smtp.gmail.com', 587) as server:
+        server.starttls()
+        server.login(GOOGLE_EMAIL_ID, GOOGLE_APP_PASSWORD)
         server.sendmail(msg['From'], [msg['To']], msg.as_string())
 
 dag = DAG(

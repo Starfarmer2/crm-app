@@ -8,7 +8,7 @@ print(sys.path)
 from crm_app.models import Order, User, db
 
 
-DATABASE_URL = 'postgresql://postgres:postgres@localhost:5432/crm'  # Adjust as needed
+DATABASE_URL = 'postgresql://postgres:postgres@localhost:5432/crm'
 
 engine = create_engine(DATABASE_URL)
 Session = sessionmaker(bind=engine)
@@ -25,5 +25,4 @@ if __name__ == '__main__':
     total_orders = count_orders_where_true(product_type=product_type)
     print(f"Total number of orders where {product_type} is True: {total_orders}")
 
-# Close the session
 session.close()

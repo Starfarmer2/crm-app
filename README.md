@@ -1,7 +1,7 @@
 # CRM Service With Flask And Airflow
 ## Setup
 1. `docker network create shared_network` in .
-2. `docker-compose up --build` in ./airflow_app and ./crm_app separately
+2. `docker-compose up --build` in ./scheduling_app and ./crm_app separately
 3. Send requests to http://localhost:5001 for crm service endpoints
 4. Airflow service dashboard
 

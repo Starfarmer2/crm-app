@@ -45,7 +45,7 @@ for user_email in df['user_email'].unique():
     exp_weighted_avg_order_total = np.sum(user_df['order_total'] * user_df['exp_time_diff_now_order']) / len(user_df)  # weighted by 1/exp(now - order placement time)
 
     print(avg_order_total, exp_weighted_avg_order_total)
-    if avg_order_total - exp_weighted_avg_order_total >= 0:
+    if avg_order_total - exp_weighted_avg_order_total >= threshold:
         print(f"User {user_email} has a decrease in order amount")
         prioritize_user_emails.append(user_email)
 

@@ -2,9 +2,10 @@ from sqlalchemy import create_engine, select, func
 from sqlalchemy.orm import sessionmaker
 import sys
 import os
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../crm_app')))
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
-from ..crm_app.models import Order, User, db
+print(sys.path)
+from crm_app.models import Order, User, db
 
 
 DATABASE_URL = 'postgresql://postgres:postgres@localhost:5432/crm'  # Adjust as needed
@@ -15,7 +16,7 @@ session = Session()
 
 # Function to count orders of particular product_type
 def count_orders_where_true(product_type):
-    count = session.query(Order).filter(getattr(Order, product_type) == True).scalar()
+    count = session.query(Order).filter(getattr(Order, product_type) == True).count()
     return count
 
 if __name__ == '__main__':
